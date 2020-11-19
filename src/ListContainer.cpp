@@ -40,12 +40,11 @@ class ListContainer : public Container
 
 	void swap(int i,int j)
 	{
-	   list<Base*>container;
+	   list<Base*>::iterator it;
 	   int counter = 0;
 	   Base* temp1;
 	   Base* temp2;
 	   int counter2 = 0;
-		list<Base*>::iterator it;
 
 	      for(it = container.begin(); it != container.end(); it++) 
 	         {
@@ -53,7 +52,7 @@ class ListContainer : public Container
 		        {
 			   temp1 = *it;
 			}
-		     else if(counter == j)
+		     if(counter == j)
 			{
 			   temp2 = *it;
 			}
@@ -68,7 +67,7 @@ class ListContainer : public Container
 			{
 			    *it = temp2;
 			}
-		      else if(counter == j)
+		      if(counter == j)
 			{
 			    *it = temp1;
 			}
