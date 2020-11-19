@@ -9,6 +9,8 @@
 #include "../lab-04/div.hpp"
 #include "../header/container.hpp"
 #include "VectorContainer.cpp"
+#include "../header/sort.hpp"
+#include "BubbleSort.cpp"
 
 int main() {
     // This is a very basic main, and being able to correctly execute this main
@@ -25,9 +27,10 @@ int main() {
     std::cout << minus->stringify() << " = " << minus->evaluate() << std::endl;
 
     VectorContainer* container = new VectorContainer();
-    container->add_element(mult);
-    container->add_element(minus);
     container->add_element(three);
-    container->print();
+    container->add_element(seven);
+    container->add_element(two);
+    container->print();    
+
     return 0;
 }
