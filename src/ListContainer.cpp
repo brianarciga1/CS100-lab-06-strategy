@@ -1,12 +1,18 @@
+#ifndef __LIST_CONTAINER_HPP__
+#define __LIST_CONTAINER_HPP__
+
 #include "../header/container.hpp"
 #include "../header/base.hpp"
 #include "../header/sort.hpp"
 #include <list>
+#include <iostream>
+using std::list;
+using namespace std;
 
 class ListContainer : public Container
 {
     protected:
-        list<Base*> baseList;
+        list<Base*> container;
         Base* child;
     public:
         ListContainer(): child(nullptr) {}
@@ -16,12 +22,12 @@ class ListContainer : public Container
 	} 
 	void add_element(Base* element)
 	{
-	    baseList.push_back(element);
+	    container.push_back(element);
 	}
 	void print()
 	{
 	    list<Base*>::iterator it;
-	       for(it = baseList.begin(); it != baseList.end(); it++) 
+	       for(it = container.begin(); it != container.end(); it++) 
 	           {
 		        Base* a = *it;
 			cout << a->stringify() << endl;
@@ -34,12 +40,14 @@ class ListContainer : public Container
 
 	void swap(int i,int j)
 	{
-	   list<Base*>::iterator it;
+	   list<Base*>container;
 	   int counter = 0;
 	   Base* temp1;
 	   Base* temp2;
 	   int counter2 = 0;
-	      for(it = baseList.begin(); it != baseList.end(); it++) 
+		list<Base*>::iterator it;
+
+	      for(it = container.begin(); it != container.end(); it++) 
 	         {
 		     if(counter == i)
 		        {
@@ -54,7 +62,7 @@ class ListContainer : public Container
 		  }
 	   counter = 0;
 	   counter2 = 0;
-	       for(it = baseList.begin(); it != baseList.end(); it++) 
+	       for(it = container.begin(); it != container.end(); it++) 
 		  {
 		      if(counter == i)
 			{
@@ -72,7 +80,7 @@ class ListContainer : public Container
 	    {
 	         list<Base*>::iterator it;
 	         int counter = 0;
-	         for(it = baseList.begin(); it != baseList.end(); it++) 
+	         for(it = container.begin(); it != container.end(); it++) 
 		    {
 		         if(counter == i)
 			    {
@@ -84,6 +92,8 @@ class ListContainer : public Container
 	     }
 	int size()
 	    {
-			return baseList.size();
+			return container.size();
             }
 };
+
+#endif	
