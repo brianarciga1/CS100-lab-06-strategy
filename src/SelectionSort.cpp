@@ -18,7 +18,7 @@ class SelectionSort : public Sort
 		    first = 0;
 		    for(j = 1; j <= i; j++)
 			{
-			    if(container->at->evaluate(j) < container->at->evaluate(first))
+			    if(container->at(j)->evaluate() < container->at(first)->evaluate())
 			        {
 				    first = j;
 				}
@@ -27,3 +27,5 @@ class SelectionSort : public Sort
 		}
 	}
 };
+
+#endif
