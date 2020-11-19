@@ -8,6 +8,8 @@ ADD_EXECUTABLE(test
     src/unit_test.cpp
     src/VectorContainer.cpp
     src/BubbleSort.cpp
+    src/ListContainer.cpp
+    src/SelectionSort.cpp
 )
 
 ADD_EXECUTABLE(main
