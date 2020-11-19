@@ -1,3 +1,9 @@
+#ifndef __SELECTION_SORT_HPP__
+#define __SELECTION_SORT_HPP__
+
+#include "../header/sort.hpp"
+#include "../header/container.hpp"
+
 using namespace std;
 
 class SelectionSort : public Sort
