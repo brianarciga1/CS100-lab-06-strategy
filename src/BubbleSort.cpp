@@ -6,7 +6,6 @@
 
 class BubbleSort : public Sort {
     public:
-	BubbleSort() : Sort() {};
 	void sort(Container* container) {
 	    for (int i = 0; i < container->size(); i++) {
 		for (int j = 0; j < container->size() - 1; j++) {

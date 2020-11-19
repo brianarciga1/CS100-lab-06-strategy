@@ -1,5 +1,5 @@
-#ifndef __VECTOR_CONTAINER_HPP__
-#define __VECTOR_CONTAINER_HPP__
+#ifndef __VECTOR_CONTAINER_CPP__
+#define __VECTOR_CONTAINER_CPP__
 
 #include "../header/container.hpp"
 //#include "../header/sort.hpp"

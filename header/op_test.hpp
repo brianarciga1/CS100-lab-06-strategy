@@ -6,6 +6,12 @@
 #include "../lab-04/add.hpp"
 #include "../lab-04/mult.hpp"
 #include "../lab-04/power.hpp"
+#include "../lab-04/sub.hpp"
+#include "../lab-04/div.hpp"
+#include "container.hpp"
+#include "../src/VectorContainer.cpp"
+#include "sort.hpp"
+#include "../src/BubbleSort.cpp"
 
 TEST(OpTest, OpStringifyNonZero) {
     Op* test = new Op(8);
@@ -161,5 +167,93 @@ TEST(PowTest, PowStringifyNegativeExponent) {
     EXPECT_EQ(test->stringify(), "8.000000**-2.000000");
 }
 
+TEST(VectorContainerTestSet, AddElementTest) {
+    VectorContainer* test = new VectorContainer();
+    Op* one = new Op(1);
+    test->add_element(one);
+
+    EXPECT_EQ(test->size(), 1);
+
+    testing::internal::CaptureStdout();
+    test->print();
+    string output = testing::internal::GetCapturedStdout();
+    EXPECT_EQ(output, "1.000000\n");
+}
+
+/*TEST(VectorContainerTestSet, PrintTest) {
+    Op* seven = new Op(7);
+    Op* one = new Op(1);
+    VectorContainer* test_container = new VectorContainer();
+
+    test_container->add_element(seven);
+    test_container->add_element(one);
+
+    ASSERT_EQ(test_container->size(), 1);
+    testing::internal::CaptureStdout();
+    test_container->print();
+    string output = testing::internal::GetCapturedStdout();
+    EXPECT_EQ(output, "7.000000\n1.000000\n");
+}*/
+
+
+TEST(VectorContainerTestSet, AtTest) {
+    Op* seven = new Op(7);
+    VectorContainer* test_container = new VectorContainer();
+
+    test_container->add_element(seven);
+
+    ASSERT_EQ(test_container->size(), 1);
+    EXPECT_EQ(test_container->at(0)->evaluate(), 7);
+}
+
+TEST(VectorContainerTestSet, SwapTest) {
+    Op* seven = new Op(7);
+    Op* three = new Op(3);
+    Op* ten = new Op(10);
+    VectorContainer* test_container = new VectorContainer();
+
+    test_container->add_element(seven);
+    test_container->add_element(three);
+    test_container->add_element(ten);
+
+    test_container->swap(0, 2);
+
+    ASSERT_EQ(test_container->size(), 3);
+    EXPECT_EQ(test_container->at(0)->evaluate(), 10);
+    EXPECT_EQ(test_container->at(2)->evaluate(), 7);
+}
+
+TEST(SortTestSet, BubbleSortTest) {
+    Op* seven = new Op(7);
+    Op* four = new Op(4);
+    Mult* TreeA = new Mult(seven, four);
+    
+    Op* three = new Op(3);
+    Op* two = new Op(2);
+    Add* TreeB = new Add(three, two);
+
+    Op* ten = new Op(10);
+    Op* six = new Op(6);
+    Sub* TreeC = new Sub(ten, six);
+
+    VectorContainer* container = new VectorContainer();
+    container->add_element(TreeA);
+    container->add_element(TreeB);
+    container->add_element(TreeC);
+
+    ASSERT_EQ(container->size(), 3);
+    EXPECT_EQ(container->at(0)->evaluate(), 28);
+    EXPECT_EQ(container->at(1)->evaluate(), 5);
+    EXPECT_EQ(container->at(2)->evaluate(), 4);
+
+    container->set_sort_function(new BubbleSort());
+    container->sort();
+
+    ASSERT_EQ(container->size(), 3);
+    EXPECT_EQ(container->at(0)->evaluate(), 4);
+    EXPECT_EQ(container->at(1)->evaluate(), 5);
+    EXPECT_EQ(container->at(2)->evaluate(), 28);
+
+}
 
 #endif //__OP_TEST_HPP__
